@@ -1,9 +1,9 @@
 from flask import Flask
-from models.create_task_models import createTaskModel
+from models.create_task_models import CreateTaskModel
 from flask_swagger_ui import get_swaggerui_blueprint
-from services.create_task_services import createTaskService
-from routes.create_task_routes import createTaskRoutes
-from schemas.create_task_schemas import createTaskSchema
+from services.create_task_services import CreateTaskService
+from routes.create_task_routes import CreateTaskRoutes
+from schemas.create_task_schemas import CreateTaskSchema
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -20,13 +20,13 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
 
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
-db_connector = createTaskModel()
+db_connector = CreateTaskModel()
 db_connector.connect_to_database()
 
-task_service = createTaskService(db_connector)
-task_schema = createTaskSchema()
+task_service = CreateTaskService(db_connector)
+task_schema = CreateTaskSchema()
 
-task_blueprint = createTaskRoutes(task_service, task_schema)
+task_blueprint = CreateTaskRoutes(task_service, task_schema)
 app.register_blueprint(task_blueprint)
 
 CORS(app, resources={r'/api/tasks': {'origins': 'http://localhost:3000'}})
