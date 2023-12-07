@@ -7,17 +7,17 @@ class CreateTaskSchema:
 
     @validates('name')
     def validate_name(self, value):
-        if len(value) < 120:
-            raise ValidationError('Name must be at leat 120 characters long.')
+        if len(value) > 120:
+            raise ValidationError('The name must have a maximum of 120 characters.')
         
     @validates('description')
-    def validate_author(self, value):
-        if len(value) < 300:
-            raise ValidationError('Description must be at leat 300 characters long.')
+    def validate_description(self, value):
+        if len(value) > 300:
+            raise ValidationError('The Description must have a maximum of 300 characters.')
     
     @validates('color')
     def validate_color(self, value):
-        if len(value) < 7:
-            raise ValidationError('Color must be at leat 7 characters long.')
+        if len(value) > 7:
+            raise ValidationError('The Color must have a maximum of 7 characters.')
         
     
