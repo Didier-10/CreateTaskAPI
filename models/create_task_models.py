@@ -8,9 +8,9 @@ class CreateTaskModel:
         self.db = None
 
     def connect_to_database(self):
-        mongodb_user = os.environ.get('MONGODB_USER')
-        mongodb_pass = os.environ.get('MONGODB_PASS')
-        mongodb_host = os.environ.get('MONGODB_HOST')
+        mongodb_user = "admin"
+        mongodb_pass = "pass123"
+        mongodb_host = "localhost"
 
         required_variables = {'MONGODB_USER': mongodb_user, 'MONGODB_PASS': mongodb_pass, 'MONGODB_HOST': mongodb_host}
 

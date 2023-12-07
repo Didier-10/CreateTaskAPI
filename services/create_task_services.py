@@ -5,7 +5,7 @@ class CreateTaskService:
     def __init__(self, db_connector):
         self.db_connector = db_connector
         
-    def get_all_task(self):
+    def get_all_tasks(self):
         try:
             self.tasks = list(self.db_connector.db.tasks.find())
             return self.tasks
