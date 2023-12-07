@@ -1,14 +1,14 @@
 from marshmallow import fields, validates, ValidationError
 
 class CreateTaskSchema:
-    title = fields.String(required=True)
+    name = fields.String(required=True)
     description = fields.String(required=False)
     color = fields.String(required=True)
 
     @validates('title')
-    def validate_title(self, value):
+    def validate_name(self, value):
         if len(value) < 120:
-            raise ValidationError('Title must be at leat 120 characters long.')
+            raise ValidationError('Name must be at leat 120 characters long.')
         
     @validates('description')
     def validate_author(self, value):
