@@ -48,7 +48,7 @@
           }
         }
       },
-      "/api/tasks/{book_id}": {
+      "/api/tasks/{task_id}": {
         "get": {
           "summary": "Get a task by ID",
           "parameters": [
