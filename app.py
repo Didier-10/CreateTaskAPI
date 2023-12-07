@@ -7,7 +7,7 @@ from schemas.create_task_schemas import createTaskSchema
 from flask_cors import CORS
 
 app = Flask(__name__)
-'''
+
 SWAGGER_URL = '/swagger'
 API_URL = '/static/swagger.json'
 swagger_ui_blueprint = get_swaggerui_blueprint(
@@ -17,8 +17,8 @@ swagger_ui_blueprint = get_swaggerui_blueprint(
         'app_name': 'Access API'
     }
 )
-'''
-#app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
+
+app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
 db_connector = createTaskModel()
 db_connector.connect_to_database()
