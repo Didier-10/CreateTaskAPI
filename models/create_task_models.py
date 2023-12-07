@@ -1,5 +1,6 @@
 import os
 from pymongo import MongoClient
+from logger.logger_base import log
 
 class CreateTaskModel:
     def __init__(self):

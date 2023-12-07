@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-#from logger.logger_base import log
+from logger.logger_base import log
 from marshmallow import ValidationError
 
 class CreateTaskRoutes(Blueprint):
@@ -21,7 +21,7 @@ class CreateTaskRoutes(Blueprint):
             self.tasks = self.task_service.get_all_tasks()
             return jsonify(self.tasks), 200
         except Exception as e:
-            #log.exception(f'Error fetching data from the database: {e}')
+            log.exception(f'Error fetching data from the database: {e}')
             return jsonify({'error': 'Failed to fetch data from the database'}), 500
     
     def get_tasks_by_id(self, task_id):
@@ -57,8 +57,7 @@ class CreateTaskRoutes(Blueprint):
             self.created_task = self.task_service.add_task(self.new_task)
             return jsonify(self.created_task), 201
         except Exception as e:
-            print(e)
-            #log.critical(f'Error adding a new task to the database: {e}')
+            log.critical(f'Error adding a new task to the database: {e}')
 
     def update_task(self, task_id):
         try:
@@ -85,8 +84,7 @@ class CreateTaskRoutes(Blueprint):
                 return jsonify({'error': 'task not found'}), 404
 
         except Exception as e:
-            print(e)
-            #log.critical(f'Error updating the task in the database: {e}')
+            log.critical(f'Error updating the task in the database: {e}')
 
     def delete_task(self, task_id):
         try:
@@ -96,5 +94,4 @@ class CreateTaskRoutes(Blueprint):
             else:
                 return jsonify({'error': 'task not found'}), 404
         except Exception as e:
-            print(e)
-            #log.critical(f'Error deleting the task in the database: {e}')
+            log.critical(f'Error deleting the task in the database: {e}')
