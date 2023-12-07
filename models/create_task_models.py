@@ -28,7 +28,7 @@ class CreateTaskModel:
                 authSource='admin',
                 authMechanism='SCRAM-SHA-256'
             )
-            self.db = self.client['microservices']
+            self.db = self.client['TaskManagement']
         except Exception as e:
             log.critical(f'Failed to connect to the database: {e}')
             raise
