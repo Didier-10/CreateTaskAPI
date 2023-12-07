@@ -5,7 +5,7 @@ class CreateTaskSchema:
     description = fields.String(required=False)
     color = fields.String(required=True)
 
-    @validates('title')
+    @validates('name')
     def validate_name(self, value):
         if len(value) < 120:
             raise ValidationError('Name must be at leat 120 characters long.')
